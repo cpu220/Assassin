@@ -1,0 +1,650 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>jQuery事件绑定 | Belial&#39;s Bookcase</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Belial">
+    
+
+    
+    <meta name="description" content="关于jquery事件绑定由于经常忘记，api又不详细，特列此清单以做备忘  $(selector).on(event,childSelector,data,function,map)">
+<meta name="keywords" content="jQuery">
+<meta property="og:type" content="article">
+<meta property="og:title" content="jQuery事件绑定">
+<meta property="og:url" content="https://cpu220.github.io/2013/12/01/关于jquery事件绑定/index.html">
+<meta property="og:site_name" content="Belial&#39;s Bookcase">
+<meta property="og:description" content="关于jquery事件绑定由于经常忘记，api又不详细，特列此清单以做备忘  $(selector).on(event,childSelector,data,function,map)">
+<meta property="og:updated_time" content="2016-02-29T13:30:05.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="jQuery事件绑定">
+<meta name="twitter:description" content="关于jquery事件绑定由于经常忘记，api又不详细，特列此清单以做备忘  $(selector).on(event,childSelector,data,function,map)">
+
+    
+    <link rel="alternative" href="/atom.xml" title="Belial&#39;s Bookcase" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/Assassin/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/Assassin/img/author.png">
+    <link rel="apple-touch-icon-precomposed" href="/Assassin/img/author.png">
+    
+    <link rel="stylesheet" href="/Assassin/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/Assassin/"><img src="/Assassin/img/logo.png" alt="Belial&#39;s Bookcase" title="Belial&#39;s Bookcase"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/Assassin/" title="Belial&#39;s Bookcase">Belial&#39;s Bookcase</a></h1>
+				<h2 class="blog-motto">It is never too late to learn</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/Assassin/" data-href="/Assassin/">Home</a></li>
+					
+						<li><a href="/Assassin/archives" data-href="/Assassin/archives">Archives</a></li>
+					
+						<li><a href="/Assassin/about" data-href="/Assassin/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="/Assassin/search/index.html" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Assassin/2013/12/01/关于jquery事件绑定/" title="jQuery事件绑定" itemprop="url">jQuery事件绑定</a>
+    
+    
+        
+  </h1>
+  <div class="page-info fn-clear">
+      
+    <div class="article-author"> 
+        
+          <a href="/Assassin/about" title="Belial" target="_blank" itemprop="author">Belial</a>
+        
+    </div>  
+    <div class="article-time">
+      <time datetime="2013-12-01T15:30:16.000Z" itemprop="datePublished"> 
+        <!-- 发表于  -->
+        2013-12-01
+      </time> 
+    </div>
+  </div>
+
+  
+  <div class="photo-content">
+
+    
+  </div>
+  
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于jquery事件绑定"><span class="toc-number">1.</span> <span class="toc-text">关于jquery事件绑定</span></a></li></ol>
+		
+			<div class="page-count">
+				<span id="busuanzi_value_page_pv"></span>
+			</div>
+		</div>
+		
+		<h3 id="关于jquery事件绑定"><a href="#关于jquery事件绑定" class="headerlink" title="关于jquery事件绑定"></a>关于jquery事件绑定</h3><p>由于经常忘记，api又不详细，特列此清单以做备忘</p>
+<ul>
+<li>$(selector).on(event,childSelector,data,function,map)<a id="more"></a>
+<pre><code>此方法官方推荐
+</code></pre></li>
+<li><p>bind()</p>
+<pre><code>$(&quot;p&quot;).bind(&quot;click&quot;,function(){
+  　　　　    alert(&quot;The paragraph was clicked.&quot;);
+  　　    });
+  　　    $(&quot;p&quot;).on(&quot;click&quot;,function(){
+  　　　    　    alert(&quot;The paragraph was clicked.&quot;);
+  　　    });  
+</code></pre></li>
+<li><p>delegate()</p>
+<pre><code>  　　$(&quot;#div1&quot;).on(&quot;click&quot;,&quot;p&quot;,function(){
+  　　　　$(this).css(&quot;background-color&quot;,&quot;pink&quot;);
+  　　});
+  　　$(&quot;#div2&quot;).delegate(&quot;p&quot;,&quot;click&quot;,function(){
+  　　　　$(this).css(&quot;background-color&quot;,&quot;pink&quot;);
+  　　});
+</code></pre></li>
+<li><p>live()</p>
+<pre><code>  　　$(&quot;#div1&quot;).on(&quot;click&quot;,function(){
+  　　　　$(this).css(&quot;background-color&quot;,&quot;pink&quot;);
+  　　});
+  　　$(&quot;#div2&quot;).live(&quot;click&quot;,function(){
+  　　　　$(this).css(&quot;background-color&quot;,&quot;pink&quot;);
+  　　});
+</code></pre></li>
+<li><p>以上3个方法 bind/delegate/live 在jQuery1.8之后不推荐使用，jQuery1.9取消了live()方法，所以现在规范都会推荐使用on()</p>
+</li>
+<li><p>on() </p>
+<pre><code>  $(&quot;p&quot;).on(&quot;click&quot;,function(){
+　　　　$(this).css(&quot;background-color&quot;,&quot;pink&quot;);
+　　});
+
+/*对多个事件进行绑定*/
+ $(&quot;p&quot;).on(&quot;mouseover mouseout&quot;,function(){
+    $(&quot;p&quot;).toggleClass(&quot;intro&quot;);
+  });
+
+/*同时绑定多个事件不同函数*/
+ $(&quot;p&quot;).on({
+    mouseover:function(){$(&quot;body&quot;).css(&quot;background-color&quot;,&quot;lightgray&quot;);},  
+    mouseout:function(){$(&quot;body&quot;).css(&quot;background-color&quot;,&quot;lightblue&quot;);}, 
+    click:function(){$(&quot;body&quot;).css(&quot;background-color&quot;,&quot;yellow&quot;);}  
+  });
+
+/*绑定自定义事件*/ 
+  $(&quot;p&quot;).on(&quot;myOwnEvent&quot;, function(event, showName){
+    $(this).text(showName + &quot;! What a beautiful name!&quot;).show();
+  });
+  $(&quot;button&quot;).click(function(){
+    $(&quot;p&quot;).trigger(&quot;myOwnEvent&quot;,[&quot;Anja&quot;]);
+  });
+
+/*传递数据到对应函数*/
+    function handlerName(event) 
+    {
+      alert(event.data.msg);
+    }
+    $(document).ready(function(){
+      $(&quot;p&quot;).on(&quot;click&quot;, {msg: &quot;You just clicked me!&quot;}, handlerName)
+    });
+
+/*在元素创建前绑定*/
+  $(&quot;div&quot;).on(&quot;click&quot;,&quot;p&quot;,function(){
+     $(this).slideToggle();
+  });
+</code></pre></li>
+</ul>
+<ul>
+<li><p>off() 　　</p>
+<pre><code> $(&quot;button&quot;).click(function(){
+  　　　　$(&quot;p&quot;).off(&quot;click&quot;);
+  　　});
+/*该方法用于对on事件绑定移除*/
+</code></pre></li>
+<li><p>one()</p>
+<pre><code>$(&quot;a&quot;).one(&quot;click&quot;,function(){
+  　　　        alert(123);
+  　　  });
+/*该方法只执行一次*/
+</code></pre></li>
+<li><p>trigger()</p>
+<pre><code>$(selector).trigger(event,eventObj,param1,param2,...)
+</code></pre></li>
+</ul>
+<pre><code>$(&quot;input&quot;).select(function(){
+    　　　　$(&quot;input&quot;).after(&quot; Text marked!&quot;);
+    　　});
+    　　$(&quot;button&quot;).click(function(){
+    　　　　$(&quot;input&quot;).trigger(&quot;select&quot;);
+    　　});
+</code></pre>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags fn-clear">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/Assassin/categories/笔记/">笔记</a>
+</div>
+
+
+  <div class="article-tags ">
+  
+  <span></span> <a href="/Assassin/tags/jQuery/">jQuery</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="https://cpu220.github.io/2013/12/01/关于jquery事件绑定/" data-title="jQuery事件绑定 | Belial&#39;s Bookcase" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/Assassin/2013/12/02/git_使用整理/" title="Git 使用整理">
+  <strong>上一篇：</strong><br/>
+  <span>
+  Git 使用整理</span>
+</a>
+</div>
+
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#关于jquery事件绑定"><span class="toc-number">1.</span> <span class="toc-text">关于jquery事件绑定</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/Assassin/categories/目标/" title="目标">目标<sup>2</sup></a></li>
+		  
+		
+		  
+			<li><a href="/Assassin/categories/笔记/" title="笔记">笔记<sup>5</sup></a></li>
+		  
+		
+		  
+			<li><a href="/Assassin/categories/转载/" title="转载">转载<sup>1</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li>
+					<a href="/Assassin/tags/Hexo/" title="Hexo">Hexo
+						<sup>2</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+			
+				<li>
+					<a href="/Assassin/tags/Thinking/" title="Thinking">Thinking
+						<sup>2</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+			
+				<li>
+					<a href="/Assassin/tags/Git/" title="Git">Git
+						<sup>1</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+			
+				<li>
+					<a href="/Assassin/tags/nodejs/" title="nodejs">nodejs
+						<sup>1</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+			
+				<li>
+					<a href="/Assassin/tags/jQuery/" title="jQuery">jQuery
+						<sup>1</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+			
+				<li>
+					<a href="/Assassin/tags/面试题/" title="面试题">面试题
+						<sup>1</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coding.net/user" target="_blank" title="寡人再是使用的代码托管平台">Coding</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m a coder. <br/>
+			This is my blog.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/1885889942" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		<a href="mailto:102864814@qq.com" target="_blank" class="icon-email" title="Email Me"></a>
+		
+	</div>
+			
+		
+    <div class="foot-count">
+    	<span>当前站点访问人数： <span id="busuanzi_value_site_pv"></span></span>
+    	<span>本站总访客：<span id="busuanzi_value_site_uv"></span></span>
+    </div>
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="#" target="_blank" title="Belial">Belial</a> © 2017 
+		
+		<a href="/Assassin/about" target="_blank" title="Belial">Belial</a>
+		
+		
+		</p>
+
+</div>
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+</footer>
+    <script src="/Assassin/js/jquery-2.0.3.min.js"></script>
+<script src="/Assassin/js/jquery.imagesloaded.min.js"></script>
+<script src="/Assassin/js/gallery.js"></script>
+<script src="/Assassin/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+
+  var url=location.pathname,str=url;
+  if(url.length > 1){
+    var str=url.substring(0,url.length-1);
+  }
+  
+  
+  $(".animated a").each(function(e){
+    var s=$(this).attr("data-href") 
+    console.log(s.indexOf(str))
+      if( s.indexOf(str) > -1){ 
+        $(this).addClass("selected");
+        return false;
+      }
+  });
+
+  
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  // $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/Assassin/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/Assassin/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+		<a title="返回顶部">
+			<i class="iconfont">&#xe600;</i>
+			<!-- <img src="/Assassin/img/scrollup.png"/> -->
+		</a>
+	</div>
+	<script src="/Assassin/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
