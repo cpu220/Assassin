@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>javacript‘s immutable | Belial&#39;s Bookcase</title>
+    <title>javacript&#39;s immutable | Belial&#39;s Bookcase</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="Belial">
@@ -14,13 +14,13 @@
     <meta name="description" content="JavaScript的类型 在不考虑es6、es7的情况下，js常规拥有：Undefined、null、Boolean、String、Number、Object、Function等。 然后我们又习惯用. 结构符来将一些属性、方法挂载到对象上。毕竟对JavaScript来说，任何东西都是Object。只是type不同。 那么问题来了，为什么 String、null、Undefined、Number会">
 <meta name="keywords" content="JavaScript">
 <meta property="og:type" content="article">
-<meta property="og:title" content="javacript‘s immutable">
+<meta property="og:title" content="javacript&#39;s immutable">
 <meta property="og:url" content="https://cpu220.github.io/2017/05/12/javacript‘s-immutable/index.html">
 <meta property="og:site_name" content="Belial&#39;s Bookcase">
 <meta property="og:description" content="JavaScript的类型 在不考虑es6、es7的情况下，js常规拥有：Undefined、null、Boolean、String、Number、Object、Function等。 然后我们又习惯用. 结构符来将一些属性、方法挂载到对象上。毕竟对JavaScript来说，任何东西都是Object。只是type不同。 那么问题来了，为什么 String、null、Undefined、Number会">
-<meta property="og:updated_time" content="2017-05-12T09:19:42.000Z">
+<meta property="og:updated_time" content="2017-05-12T14:24:18.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="javacript‘s immutable">
+<meta name="twitter:title" content="javacript&#39;s immutable">
 <meta name="twitter:description" content="JavaScript的类型 在不考虑es6、es7的情况下，js常规拥有：Undefined、null、Boolean、String、Number、Object、Function等。 然后我们又习惯用. 结构符来将一些属性、方法挂载到对象上。毕竟对JavaScript来说，任何东西都是Object。只是type不同。 那么问题来了，为什么 String、null、Undefined、Number会">
 
     
@@ -80,7 +80,7 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/Assassin/2017/05/12/javacript‘s-immutable/" title="javacript‘s immutable" itemprop="url">javacript‘s immutable</a>
+      <a href="/Assassin/2017/05/12/javacript‘s-immutable/" title="javacript&#39;s immutable" itemprop="url">javacript&#39;s immutable</a>
     
     
       <div class="article-description">今天被人问了个很low的问题。没错，还回答错了。后来发现，虽然错了，但错的原因也不对。所以特意研究了一下这个问题。</div>
@@ -114,7 +114,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript的类型"><span class="toc-number">1.</span> <span class="toc-text">JavaScript的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript对象"><span class="toc-number">1.1.</span> <span class="toc-text">JavaScript对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript变量"><span class="toc-number">1.2.</span> <span class="toc-text">JavaScript变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思考"><span class="toc-number">1.3.</span> <span class="toc-text">思考</span></a></li></ol></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript的类型"><span class="toc-number">1.</span> <span class="toc-text">JavaScript的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript对象"><span class="toc-number">1.1.</span> <span class="toc-text">JavaScript对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript变量"><span class="toc-number">1.2.</span> <span class="toc-text">JavaScript变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思考"><span class="toc-number">1.3.</span> <span class="toc-text">思考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后续思考"><span class="toc-number">1.4.</span> <span class="toc-text">后续思考</span></a></li></ol></li></ol>
 		
 			<div class="page-count">
 				<span id="busuanzi_value_page_pv"></span>
@@ -145,16 +145,38 @@
 <h3 id="思考"><a href="#思考" class="headerlink" title="思考"></a>思考</h3><ul>
 <li>所以，任何东西都是对象，无论是Number、null、undefined。只是我们将这个对象，以赋值的形式给了变量。那么，为什么Number、string、null没有prototype。</li>
 <li><p>JavaScript：The Definitive Guide</p>
-<pre><code>JavaScript’s types can be divided into primitive types and object types. And they can be divided into types with methods and types without. They can also be categorized as mutable and immutable types. A value of a mutable type can change. Objects and arrays are mutable: a JavaScript program can change the values of object properties and array elements. Numbers, booleans, null, and undefined are immutable
+<pre><code>JavaScript’s types can be divided into primitive types and object types. And they can be divided into types with methods and types without（我认为这里少了个单词 methods，但其实语法上也没问题）. They can also be categorized as mutable and immutable types. A value of a mutable type can change. Objects and arrays are mutable: a JavaScript program can change the values of object properties and array elements. Numbers, booleans, null, and undefined are immutable
 </code></pre></li>
-<li><p>javascrip类型可以分为原始类型和对象类型。并且它们都通过方法来进行类型转换。它们都可以按可变和不可变来分类。一个可变的值可以更改。 Object和Array都是可变的：一个JavaScript程序能够改变对象的属性和数组元素。Number，boolean，null，以及 undefined 都是不可变的</p>
+<li><p>javascrip类型可以分为原始类型和引用类型。并且他们可以分为有方法的类型和没有方法的类型。它们都可以按可变和不可变来分类。一个可变的值可以更改。 Object和Array都是可变的：一个JavaScript程序能够改变对象的属性和数组元素。Number，boolean，null，以及 undefined 都是不可变的</p>
 </li>
 <li>所以我们可以这么理解<ul>
 <li>我们只是var了一个变量，让它的值为某种类型的对象。当我们用typeof，还是Object.prototype.toString.call()去判断类型的时候，其实是判断变量上值的类型。而不是这个变量。</li>
-<li>当我们将一个原始类型复制给了一个变量，也就意味着这个变量的值可以变，但值的对象是固定且不可变的。</li>
-<li>所以，a.b 其实是要在a的对象上添加方法或属性，然后当a的对象为原始类型时，则不被允许，所以代码第二行没有报错，但也没有挂载上去。在第三行代码执行时，因为a没有b的属性，所以不可能去执行a.b()</li>
+<li>当我们将一个原始类型复制给了一个变量，也就意味着这个变量的值可以变，因为是按值访问，所以可以修改变量中的实际值，但值的对象是固定且不可变的。</li>
+<li>所以，a.b 其实是要在a的对象上添加方法或属性，然后当a的对象为原始类型时，则不被允许，所以代码第二行没有报错，但也没有挂载上去。在第三行代码执行时，因为a没有b的属性，所以不可能去执行a.b()<br>*<h3 id="后续思考"><a href="#后续思考" class="headerlink" title="后续思考"></a>后续思考</h3></li>
 </ul>
 </li>
+<li>其实<code>object types</code> 我一开始是翻译为对象类型。但其实对象其实是引用类型的实例。比如:</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义一个person的引用类型</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params">name,sex</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name=name;</div><div class="line">	<span class="keyword">this</span>.sex=sex;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> man = <span class="keyword">new</span> person(<span class="string">'李雷'</span>,<span class="string">'man'</span>); <span class="comment">// 创建实例</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p>那么为什么会有区别？</p>
+<ul>
+<li>原始类型：存储在栈(stack)中，所以他们的值，存在变量的<code>访问的位置</code></li>
+<li>引用类型：存储在堆(heap)中,所以他们存在变量上的其实是个指针，指向存储对象的内存地址。</li>
+<li>因为原始类型占据的空间小且固定。所以将他存在栈中，因为方便快速查询。而引用类型的大小不固定，放在栈中反而会降低变量查询效率。而如果在栈中存放的是个地址，那么地址大小就是固定的。</li>
+<li>所以，引用类型的访问，其实就是先访问对象在栈中所存的堆地址，然后再根据这个地址去堆内存中获取这个对象的值。</li>
+</ul>
+</li>
+<li><p>那么2个赋值又有什么区别？</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a= &#123;<span class="attr">c</span>:<span class="number">1</span>&#125;; <span class="comment">// undefined</span></div><div class="line"><span class="keyword">var</span> b=a; <span class="comment">// undefined</span></div><div class="line">b.c = <span class="number">2</span>; <span class="comment">//2</span></div><div class="line">a.c; <span class="comment">// 2</span></div></pre></td></tr></table></figure>
+<ul>
+<li>从上面这个代码上可以看出来，引用类型其实是，a将变量在栈中保存的地址给了b。所以修改变量b，就是修改了b对应在堆内存中的值，然而栈内存中的地址没有变，所以当a再去访问c的时候，a.c的值却和b.c 一样。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x=<span class="number">1</span>; <span class="comment">// undefined</span></div><div class="line"><span class="keyword">var</span> y=x; <span class="comment">// undefined</span></div><div class="line">y;<span class="comment">// 1</span></div><div class="line">x=<span class="number">2</span>;<span class="comment">// 2</span></div><div class="line">y;<span class="comment">// 1</span></div></pre></td></tr></table></figure>
+<ul>
+<li>上面这段代码可以看出来，原始类型其实是将变量中保存在栈中的值，复制给了y，x和y是完全独立的，仅有的关系也就是值一样。</li>
 </ul>
   
 	</div>
@@ -178,7 +200,7 @@
 
 	<div class="article-share" id="share">
 	
-	  <div data-url="https://cpu220.github.io/2017/05/12/javacript‘s-immutable/" data-title="javacript‘s immutable | Belial&#39;s Bookcase" data-tsina="null" class="share clearfix">
+	  <div data-url="https://cpu220.github.io/2017/05/12/javacript‘s-immutable/" data-title="javacript&#39;s immutable | Belial&#39;s Bookcase" data-tsina="null" class="share clearfix">
 	  </div>
 	
 	</div>
@@ -210,7 +232,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript的类型"><span class="toc-number">1.</span> <span class="toc-text">JavaScript的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript对象"><span class="toc-number">1.1.</span> <span class="toc-text">JavaScript对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript变量"><span class="toc-number">1.2.</span> <span class="toc-text">JavaScript变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思考"><span class="toc-number">1.3.</span> <span class="toc-text">思考</span></a></li></ol></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaScript的类型"><span class="toc-number">1.</span> <span class="toc-text">JavaScript的类型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript对象"><span class="toc-number">1.1.</span> <span class="toc-text">JavaScript对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JavaScript变量"><span class="toc-number">1.2.</span> <span class="toc-text">JavaScript变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思考"><span class="toc-number">1.3.</span> <span class="toc-text">思考</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#后续思考"><span class="toc-number">1.4.</span> <span class="toc-text">后续思考</span></a></li></ol></li></ol>
  
   </div>
 
@@ -279,7 +301,7 @@
 		
 			
 				<li>
-					<a href="/Assassin/tags/JavaScript/" title="JavaScript">JavaScript
+					<a href="/Assassin/tags/Git/" title="Git">Git
 						<sup>1</sup>
 						<span><span>
 					</a>
@@ -289,7 +311,7 @@
 		
 			
 				<li>
-					<a href="/Assassin/tags/Git/" title="Git">Git
+					<a href="/Assassin/tags/JavaScript/" title="JavaScript">JavaScript
 						<sup>1</sup>
 						<span><span>
 					</a>
