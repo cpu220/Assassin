@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://cpu220.github.io/2017/05/12/javacript‘s-immutable/index.html">
 <meta property="og:site_name" content="Belial&#39;s Bookcase">
 <meta property="og:description" content="JavaScript的类型 在不考虑es6、es7的情况下，js常规拥有：Undefined、null、Boolean、String、Number、Object、Function等。 然后我们又习惯用. 结构符来将一些属性、方法挂载到对象上。毕竟对JavaScript来说，任何东西都是Object。只是type不同。 那么问题来了，为什么 String、null、Undefined、Number会">
-<meta property="og:updated_time" content="2017-05-12T14:24:18.000Z">
+<meta property="og:updated_time" content="2017-05-12T14:26:13.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javacript&#39;s immutable">
 <meta name="twitter:description" content="JavaScript的类型 在不考虑es6、es7的情况下，js常规拥有：Undefined、null、Boolean、String、Number、Object、Function等。 然后我们又习惯用. 结构符来将一些属性、方法挂载到对象上。毕竟对JavaScript来说，任何东西都是Object。只是type不同。 那么问题来了，为什么 String、null、Undefined、Number会">
@@ -152,9 +152,11 @@
 <li>所以我们可以这么理解<ul>
 <li>我们只是var了一个变量，让它的值为某种类型的对象。当我们用typeof，还是Object.prototype.toString.call()去判断类型的时候，其实是判断变量上值的类型。而不是这个变量。</li>
 <li>当我们将一个原始类型复制给了一个变量，也就意味着这个变量的值可以变，因为是按值访问，所以可以修改变量中的实际值，但值的对象是固定且不可变的。</li>
-<li>所以，a.b 其实是要在a的对象上添加方法或属性，然后当a的对象为原始类型时，则不被允许，所以代码第二行没有报错，但也没有挂载上去。在第三行代码执行时，因为a没有b的属性，所以不可能去执行a.b()<br>*<h3 id="后续思考"><a href="#后续思考" class="headerlink" title="后续思考"></a>后续思考</h3></li>
+<li>所以，a.b 其实是要在a的对象上添加方法或属性，然后当a的对象为原始类型时，则不被允许，所以代码第二行没有报错，但也没有挂载上去。在第三行代码执行时，因为a没有b的属性，所以不可能去执行a.b()</li>
 </ul>
 </li>
+</ul>
+<h3 id="后续思考"><a href="#后续思考" class="headerlink" title="后续思考"></a>后续思考</h3><ul>
 <li>其实<code>object types</code> 我一开始是翻译为对象类型。但其实对象其实是引用类型的实例。比如:</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 定义一个person的引用类型</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">person</span>(<span class="params">name,sex</span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.name=name;</div><div class="line">	<span class="keyword">this</span>.sex=sex;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> man = <span class="keyword">new</span> person(<span class="string">'李雷'</span>,<span class="string">'man'</span>); <span class="comment">// 创建实例</span></div></pre></td></tr></table></figure>
