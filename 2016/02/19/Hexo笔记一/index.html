@@ -262,11 +262,23 @@ photos: #封面图
 
 </nav>
 
-	
-<section id="comments" class="comment">
-    <div id="uyan_frame"></div>
-    <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2133756"></script>
-</section>
+	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+  var gitment = new Gitment({
+
+    owner: 'cpu220',
+    repo: 'git@github.com:cpu220/x.git',
+    oauth: {
+      client_id: '0bd69e32800f1ed398ca',
+      client_secret: '5d19e507d7afa90c9f2efc34725900fb5ae87c32',
+    },
+  })
+  gitment.render('container')
+</script>
+
+
+
 
 
 </div>  
