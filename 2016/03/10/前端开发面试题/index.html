@@ -982,7 +982,9 @@ JS 分文件夹存放 命名以该JS功能为准的英文翻译。
 格式不断修改更新中。
 </code></pre>  
 	</div>
-		<footer class="article-footer clearfix">
+
+		
+<footer class="article-footer clearfix">
 <div class="article-catetags fn-clear">
 
 <div class="article-categories">
@@ -1034,7 +1036,15 @@ JS 分文件夹存放 命名以该JS功能为准的英文翻译。
 
 </nav>
 
-	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	
+<div id="issues"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<style>
+    .gitment-root-container {
+
+        padding: 15px;
+    }
+</style>
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
   var gitment = new Gitment({
@@ -1044,9 +1054,9 @@ JS 分文件夹存放 命名以该JS功能为准的英文翻译。
     oauth: {
       client_id: '0bd69e32800f1ed398ca',
       client_secret: '5d19e507d7afa90c9f2efc34725900fb5ae87c32',
-    },
+    }
   })
-  gitment.render('container')
+  gitment.render('issues')
 </script>
 
 

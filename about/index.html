@@ -111,7 +111,9 @@
 <p><span class="block-tip">懒癌晚期</span><span class="block-tip">没事尽瞎整不整不舒服斯基</span><span class="block-tip">有技术追求的前端程序猿</span></p>
   
 	</div>
-		<footer class="article-footer clearfix">
+
+		
+<footer class="article-footer clearfix">
 <div class="article-catetags fn-clear">
 
 
@@ -132,7 +134,15 @@
    	       
 	</article>
 	
-	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	
+<div id="issues"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<style>
+    .gitment-root-container {
+
+        padding: 15px;
+    }
+</style>
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
   var gitment = new Gitment({
@@ -142,9 +152,9 @@
     oauth: {
       client_id: '0bd69e32800f1ed398ca',
       client_secret: '5d19e507d7afa90c9f2efc34725900fb5ae87c32',
-    },
+    }
   })
-  gitment.render('container')
+  gitment.render('issues')
 </script>
 
 

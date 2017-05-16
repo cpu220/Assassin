@@ -229,7 +229,9 @@ git push
 <p><img src="http://f.picphotos.baidu.com/album/pic/item/3801213fb80e7becd1e9c1a12c2eb9389b506bbb.jpg?" alt=""></p>
   
 	</div>
-		<footer class="article-footer clearfix">
+
+		
+<footer class="article-footer clearfix">
 <div class="article-catetags fn-clear">
 
 <div class="article-categories">
@@ -281,7 +283,15 @@ git push
 
 </nav>
 
-	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	
+<div id="issues"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<style>
+    .gitment-root-container {
+
+        padding: 15px;
+    }
+</style>
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
   var gitment = new Gitment({
@@ -291,9 +301,9 @@ git push
     oauth: {
       client_id: '0bd69e32800f1ed398ca',
       client_secret: '5d19e507d7afa90c9f2efc34725900fb5ae87c32',
-    },
+    }
   })
-  gitment.render('container')
+  gitment.render('issues')
 </script>
 
 

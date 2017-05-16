@@ -210,7 +210,9 @@ photos: #封面图
 </ul>
 <h2 id="to-be-continue"><a href="#to-be-continue" class="headerlink" title="to be continue"></a>to be continue</h2>  
 	</div>
-		<footer class="article-footer clearfix">
+
+		
+<footer class="article-footer clearfix">
 <div class="article-catetags fn-clear">
 
 <div class="article-categories">
@@ -262,7 +264,15 @@ photos: #封面图
 
 </nav>
 
-	<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+	
+<div id="issues"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<style>
+    .gitment-root-container {
+
+        padding: 15px;
+    }
+</style>
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
   var gitment = new Gitment({
@@ -272,9 +282,9 @@ photos: #封面图
     oauth: {
       client_id: '0bd69e32800f1ed398ca',
       client_secret: '5d19e507d7afa90c9f2efc34725900fb5ae87c32',
-    },
+    }
   })
-  gitment.render('container')
+  gitment.render('issues')
 </script>
 
 
