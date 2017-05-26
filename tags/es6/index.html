@@ -151,7 +151,7 @@
 <script src="/Assassin/js/jquery.imagesloaded.min.js"></script>
 <script src="/Assassin/js/gallery.js"></script>
 <script src="/Assassin/js/jquery.qrcode-0.12.0.min.js"></script>
-<script src="/Assassin/js/canvas-particle.js"></script>
+<!--<script src="/Assassin/js/canvas-particle.js"></script>--> <!-- 性能太差，暂时取消 -->
 
 
 
@@ -245,22 +245,22 @@ $(document).ready(function(){
     $('.fancybox').fancybox();
   }
 
-
-  var config = {
-    id:'canvasContent',
-    vx: 2,//点x轴速度,正为右，负为左
-    vy:  2,//点y轴速度
-    height: 2,//点高宽，其实为正方形，所以不宜太大
-    width: 2,
-    count: 50,//点个数
-    color: "121, 162, 185",//点颜色
-    stroke: "130,255,255",//线条颜色
-    dist: 6000,//点吸附距离
-    e_dist: 20000,//鼠标吸附加速距离
-    max_conn: 1//点到点最大连接数
-  }
-  //调用
-  CanvasParticle(config);
+// todo 性能太差，暂时取消
+//  var config = {
+//    id:'canvasContent',
+//    vx: 2,//点x轴速度,正为右，负为左
+//    vy:  2,//点y轴速度
+//    height: 2,//点高宽，其实为正方形，所以不宜太大
+//    width: 2,
+//    count: 50,//点个数
+//    color: "121, 162, 185",//点颜色
+//    stroke: "130,255,255",//线条颜色
+//    dist: 6000,//点吸附距离
+//    e_dist: 20000,//鼠标吸附加速距离
+//    max_conn: 1//点到点最大连接数
+//  }
+//  //调用
+//  CanvasParticle(config);
 
 
 }); 
