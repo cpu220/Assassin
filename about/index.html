@@ -39,39 +39,43 @@
       <body>
         <header>
           
-<div>
-		
-			<div id="imglogo">
-				<a href="/Assassin/"><img src="/Assassin/img/logo.png" alt="Belial&#39;s Bookcase" title="Belial&#39;s Bookcase"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/Assassin/" title="Belial&#39;s Bookcase">Belial&#39;s Bookcase</a></h1>
-				<h2 class="blog-motto">It is never too late to learn</h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+<div  id="canvasContent">
+	<div class="header-content fn-clear">
+        
+		<div id="imglogo">
+			<a href="/Assassin/"><img src="/Assassin/img/logo.png" alt="Belial&#39;s Bookcase" title="Belial&#39;s Bookcase"/></a>
+		</div>
+        
+		<div id="textlogo">
+			<h1 class="site-name"><a href="/Assassin/" title="Belial&#39;s Bookcase">Belial&#39;s Bookcase</a></h1>
+			<h2 class="blog-motto">It is never too late to learn</h2>
+		</div>
+		<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
 			</a></div>
-			<nav class="animated">
+		<nav class="animated">
+			<ul>
 				<ul>
-					<ul>
-					 
-						<li><a href="/Assassin/" data-href="/Assassin/">Home</a></li>
-					
-						<li><a href="/Assassin/archives" data-href="/Assassin/archives">Archives</a></li>
-					
-						<li><a href="/Assassin/about" data-href="/Assassin/about">About</a></li>
-					
+                    
+					<li><a href="/Assassin/" data-href="/Assassin/">Home</a></li>
+                    
+					<li><a href="/Assassin/archives" data-href="/Assassin/archives">Archives</a></li>
+                    
+					<li><a href="/Assassin/about" data-href="/Assassin/about">About</a></li>
+                    
 					<li>
- 					
-					<form class="search" action="/Assassin/search/index.html" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
-					</form>
-					
+                        
+						<form class="search" action="/Assassin/search/index.html" method="get" accept-charset="utf-8">
+							<label>Search</label>
+							<input type="search" id="search" autocomplete="off" name="q" maxlength="20" placeholder="Search" />
+						</form>
+                        
 					</li>
 				</ul>
-			</nav>			
+		</nav>
+	</div>
 </div>
+
+
         </header>
         <div id="container">
           <div id="main" class="page" itemscope itemprop="blogPost">
@@ -83,20 +87,20 @@
       <a href="/Assassin/about/index.html" title="about" itemprop="url">about</a>
     
     
-        
+
   </h1>
   <div class="page-info fn-clear">
-      
-    <div class="article-author"> 
+
+    <div class="article-author">
         
           <a href="/Assassin/about" title="Belial" target="_blank" itemprop="author">Belial</a>
         
-    </div>  
+    </div>
     <div class="article-time">
-      <time datetime="2013-12-02T15:30:16.000Z" itemprop="datePublished"> 
+      <time datetime="2013-12-02T15:30:16.000Z" itemprop="datePublished">
         <!-- 发表于  -->
         2013-12-02
-      </time> 
+      </time>
     </div>
   </div>
 
@@ -213,6 +217,9 @@
 <script src="/Assassin/js/jquery.imagesloaded.min.js"></script>
 <script src="/Assassin/js/gallery.js"></script>
 <script src="/Assassin/js/jquery.qrcode-0.12.0.min.js"></script>
+<script src="/Assassin/js/canvas-particle.js"></script>
+
+
 
 <script type="text/javascript">
 $(document).ready(function(){ 
@@ -352,6 +359,25 @@ $(document).ready(function(){
   if($.fancybox){
     $('.fancybox').fancybox();
   }
+
+
+  var config = {
+    id:'canvasContent',
+    vx: 2,//点x轴速度,正为右，负为左
+    vy:  2,//点y轴速度
+    height: 2,//点高宽，其实为正方形，所以不宜太大
+    width: 2,
+    count: 50,//点个数
+    color: "121, 162, 185",//点颜色
+    stroke: "130,255,255",//线条颜色
+    dist: 6000,//点吸附距离
+    e_dist: 20000,//鼠标吸附加速距离
+    max_conn: 1//点到点最大连接数
+  }
+  //调用
+  CanvasParticle(config);
+
+
 }); 
 </script>
 

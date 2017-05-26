@@ -415,12 +415,6 @@ body >header {
   box-shadow: 2px 4px 5px rgba(3,3,3,0.2);
   background: url("../") center #1f1f1f;
   color: #fff;
-  padding: 1em 0 1.8em;
-}
-@media only screen and (min-width: 1024px) {
-  body >header {
-    padding: 1.8em 0 1.5em;
-  }
 }
 body >header >div {
   width: 95%;
@@ -436,6 +430,11 @@ body >header >div {
 body >header a {
   display: block;
   color: #fff;
+}
+body >header .header-content {
+  padding: 1.8em 0 0.5em;
+  position: relative;
+  z-index: 0;
 }
 #imglogo {
   float: left;
