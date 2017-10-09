@@ -11,18 +11,18 @@
     
 
     
-    <meta name="description" content="一、For Windows 下载地址：http://msysgit.github.io/ 安装完成后，在开始菜单里找到“Git”-&amp;gt;“Git Bash”，蹦出一个类似命令行窗口的东西，就说明Git安装成功！ git 配置（其实是为常用命令创造别名） $ git config --global user.name &amp;quot;Your Name&amp;quot;  $ git config --gl">
+    <meta name="description" content="一、For Windows 下载地址：http://msysgit.github.io/ 安装完成后，在开始菜单里找到“Git”-&amp;gt;“Git Bash”，蹦出一个类似命令行窗口的东西，就说明Git安装成功！ git 配置（其实是为常用命令创造别名） $ git config --global user.name &amp;quot;Your Name&amp;quot; $ git config --glo">
 <meta name="keywords" content="Git">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Git 使用整理">
 <meta property="og:url" content="https://cpu220.github.io/2013/12/02/git_使用整理/index.html">
 <meta property="og:site_name" content="Belial&#39;s Bookcase">
-<meta property="og:description" content="一、For Windows 下载地址：http://msysgit.github.io/ 安装完成后，在开始菜单里找到“Git”-&amp;gt;“Git Bash”，蹦出一个类似命令行窗口的东西，就说明Git安装成功！ git 配置（其实是为常用命令创造别名） $ git config --global user.name &amp;quot;Your Name&amp;quot;  $ git config --gl">
+<meta property="og:description" content="一、For Windows 下载地址：http://msysgit.github.io/ 安装完成后，在开始菜单里找到“Git”-&amp;gt;“Git Bash”，蹦出一个类似命令行窗口的东西，就说明Git安装成功！ git 配置（其实是为常用命令创造别名） $ git config --global user.name &amp;quot;Your Name&amp;quot; $ git config --glo">
 <meta property="og:image" content="http://f.picphotos.baidu.com/album/pic/item/3801213fb80e7becd1e9c1a12c2eb9389b506bbb.jpg?">
-<meta property="og:updated_time" content="2016-02-19T14:48:03.000Z">
+<meta property="og:updated_time" content="2017-10-09T14:35:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Git 使用整理">
-<meta name="twitter:description" content="一、For Windows 下载地址：http://msysgit.github.io/ 安装完成后，在开始菜单里找到“Git”-&amp;gt;“Git Bash”，蹦出一个类似命令行窗口的东西，就说明Git安装成功！ git 配置（其实是为常用命令创造别名） $ git config --global user.name &amp;quot;Your Name&amp;quot;  $ git config --gl">
+<meta name="twitter:description" content="一、For Windows 下载地址：http://msysgit.github.io/ 安装完成后，在开始菜单里找到“Git”-&amp;gt;“Git Bash”，蹦出一个类似命令行窗口的东西，就说明Git安装成功！ git 配置（其实是为常用命令创造别名） $ git config --global user.name &amp;quot;Your Name&amp;quot; $ git config --glo">
 <meta name="twitter:image" content="http://f.picphotos.baidu.com/album/pic/item/3801213fb80e7becd1e9c1a12c2eb9389b506bbb.jpg?">
 
     
@@ -129,8 +129,8 @@
 <li>下载地址：<a href="http://msysgit.github.io/" target="_blank" rel="external">http://msysgit.github.io/</a></li>
 <li>安装完成后，在开始菜单里找到“Git”-&gt;“Git Bash”，蹦出一个类似命令行窗口的东西，就说明Git安装成功！</li>
 <li><p>git 配置（其实是为常用命令创造别名）</p>
-<pre><code>$ git config --global user.name &quot;Your Name&quot; 
-$ git config --global user.email &quot;email@example.com&quot; 
+<pre><code>$ git config --global user.name &quot;Your Name&quot;
+$ git config --global user.email &quot;email@example.com&quot;
 </code></pre></li>
 </ul>
 <a id="more"></a>
@@ -141,7 +141,7 @@ $ git config --global user.email &quot;email@example.com&quot;
 $ cd abc //进入 abc 目录
 $ pwd //显示当前目录
 
-执行结果：/Users/userName/abc 
+执行结果：/Users/userName/abc
 </code></pre></li>
 <li><p>将abc目录变为某项目的版本库目录</p>
 <pre><code>   $ git init //初始化，会生成一个 git文件夹，注意别动改文件夹下内容。用于跟踪管理版本
@@ -156,15 +156,14 @@ $ git commit -m &quot;123123&quot; //添加备注，并添提交至git仓库
 <p>commit是批量型提交，但add确是需要多次添加一个文件</p>
 <ul>
 <li><p>查看状态</p>
-<pre><code>$ git status 
+<pre><code>$ git status
 </code></pre></li>
 <li>关联远程库</li>
 </ul>
 <pre><code>$ git remote add origin 远程库地址 //远程库地址是托管平台创建代码库时所生成的xxxx.git
 </code></pre><p>主要用于对代码托管平台进行维护，github、coding</p>
 <ul>
-<li>更新远程代码到本地</li>
-<li><pre><code>git clone xxx.git库地址
+<li>更新远程代码到本地<br>*<pre><code>git clone xxx.git库地址
 git pull origin master
 </code></pre></li>
 </ul>
@@ -183,7 +182,7 @@ git checkout -b my_previous_version 9位字符编码
 <pre><code>git branch -d new_feature//把分支合并到主干分支，从主干(master)分支上发送
 </code></pre><ul>
 <li><p>假如修已经合并了，那么只会删除分支。假如分支未合并，会得到错误信息。所以需要强制删除</p>
-<pre><code>git branch -D new_feature 
+<pre><code>git branch -D new_feature
 </code></pre></li>
 </ul>
 </li>
@@ -195,7 +194,7 @@ git checkout -b my_previous_version 9位字符编码
 $ git remote add origin xxxx.git
 $ git pull
 $ git add .
-$ git commit -m &quot;123123&quot; 
+$ git commit -m &quot;123123&quot;
 $ git push
 </code></pre></li>
 </ul>
@@ -213,7 +212,7 @@ $ git push
 <li>$ git remote rm origin</li>
 <li>$ git remote add origin xxxx.git  </li>
 <li>如果输入$ git remote rm origin 还是报错的话，error: Could not remove config section ‘remote.origin’. 我们需要修改gitconfig文件的内容</li>
-<li>找到你的github的安装路径，我的是C:\Users\ASUS\AppData\Local\GitHub\PortableGit_ca477551eeb4aea0e4ae9fcd3358bd96720bb5c8\etc.找到一个名为gitconfig的文件，打开它把里面的[remote “origin”]那一行删掉就好了！ </li>
+<li>找到你的github的安装路径，我的是C:\Users\ASUS\AppData\Local\GitHub\PortableGit_ca477551eeb4aea0e4ae9fcd3358bd96720bb5c8\etc.找到一个名为gitconfig的文件，打开它把里面的[remote “origin”]那一行删掉就好了！</li>
 </ol>
 </li>
 <li><p>there is no tracking information</p>
@@ -240,7 +239,7 @@ git push
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/Assassin/categories/笔记/">笔记</a>
+  <a class="article-category-link" href="/Assassin/categories/Note/">Note</a>
 </div>
 
 
@@ -337,11 +336,11 @@ git push
 		<ul>
 		
 		  
-			<li><a href="/Assassin/categories/目标/" title="目标">目标<sup>1</sup></a></li>
+			<li><a href="/Assassin/categories/Note/" title="Note">Note<sup>10</sup></a></li>
 		  
 		
 		  
-			<li><a href="/Assassin/categories/笔记/" title="笔记">笔记<sup>7</sup></a></li>
+			<li><a href="/Assassin/categories/目标/" title="目标">目标<sup>1</sup></a></li>
 		  
 		
 		  
@@ -360,8 +359,8 @@ git push
 		
 			
 				<li>
-					<a href="/Assassin/tags/nodejs/" title="nodejs">nodejs
-						<sup>2</sup>
+					<a href="/Assassin/tags/Redux/" title="Redux">Redux
+						<sup>3</sup>
 						<span><span>
 					</a>
 
@@ -371,6 +370,16 @@ git push
 			
 				<li>
 					<a href="/Assassin/tags/Hexo/" title="Hexo">Hexo
+						<sup>2</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+			
+				<li>
+					<a href="/Assassin/tags/nodejs/" title="nodejs">nodejs
 						<sup>2</sup>
 						<span><span>
 					</a>
@@ -410,7 +419,7 @@ git push
 		
 			
 				<li>
-					<a href="/Assassin/tags/引用类型/" title="引用类型">引用类型
+					<a href="/Assassin/tags/es6/" title="es6">es6
 						<sup>1</sup>
 						<span><span>
 					</a>
@@ -450,16 +459,6 @@ git push
 		
 			
 				<li>
-					<a href="/Assassin/tags/面试题/" title="面试题">面试题
-						<sup>1</sup>
-						<span><span>
-					</a>
-
-				</li>
-			
-		
-			
-				<li>
 					<a href="/Assassin/tags/Thinking/" title="Thinking">Thinking
 						<sup>1</sup>
 						<span><span>
@@ -470,7 +469,17 @@ git push
 		
 			
 				<li>
-					<a href="/Assassin/tags/es6/" title="es6">es6
+					<a href="/Assassin/tags/面试题/" title="面试题">面试题
+						<sup>1</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+			
+				<li>
+					<a href="/Assassin/tags/引用类型/" title="引用类型">引用类型
 						<sup>1</sup>
 						<span><span>
 					</a>

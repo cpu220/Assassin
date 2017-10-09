@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://cpu220.github.io/2013/12/01/关于jquery事件绑定/index.html">
 <meta property="og:site_name" content="Belial&#39;s Bookcase">
 <meta property="og:description" content="关于jquery事件绑定由于经常忘记，api又不详细，特列此清单以做备忘  $(selector).on(event,childSelector,data,function,map)">
-<meta property="og:updated_time" content="2016-02-29T13:30:05.000Z">
+<meta property="og:updated_time" content="2017-10-09T14:33:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery事件绑定">
 <meta name="twitter:description" content="关于jquery事件绑定由于经常忘记，api又不详细，特列此清单以做备忘  $(selector).on(event,childSelector,data,function,map)">
@@ -154,7 +154,7 @@
 </code></pre></li>
 <li><p>以上3个方法 bind/delegate/live 在jQuery1.8之后不推荐使用，jQuery1.9取消了live()方法，所以现在规范都会推荐使用on()</p>
 </li>
-<li><p>on() </p>
+<li><p>on()</p>
 <pre><code>  $(&quot;p&quot;).on(&quot;click&quot;,function(){
 　　　　$(this).css(&quot;background-color&quot;,&quot;pink&quot;);
 　　});
@@ -167,11 +167,11 @@
 /*同时绑定多个事件不同函数*/
  $(&quot;p&quot;).on({
     mouseover:function(){$(&quot;body&quot;).css(&quot;background-color&quot;,&quot;lightgray&quot;);},  
-    mouseout:function(){$(&quot;body&quot;).css(&quot;background-color&quot;,&quot;lightblue&quot;);}, 
+    mouseout:function(){$(&quot;body&quot;).css(&quot;background-color&quot;,&quot;lightblue&quot;);},
     click:function(){$(&quot;body&quot;).css(&quot;background-color&quot;,&quot;yellow&quot;);}  
   });
 
-/*绑定自定义事件*/ 
+/*绑定自定义事件*/
   $(&quot;p&quot;).on(&quot;myOwnEvent&quot;, function(event, showName){
     $(this).text(showName + &quot;! What a beautiful name!&quot;).show();
   });
@@ -180,7 +180,7 @@
   });
 
 /*传递数据到对应函数*/
-    function handlerName(event) 
+    function handlerName(event)
     {
       alert(event.data.msg);
     }
@@ -226,7 +226,7 @@
 
 <div class="article-categories">
   <span></span>
-  <a class="article-category-link" href="/Assassin/categories/笔记/">笔记</a>
+  <a class="article-category-link" href="/Assassin/categories/Note/">Note</a>
 </div>
 
 
@@ -315,11 +315,11 @@
 		<ul>
 		
 		  
-			<li><a href="/Assassin/categories/目标/" title="目标">目标<sup>1</sup></a></li>
+			<li><a href="/Assassin/categories/Note/" title="Note">Note<sup>10</sup></a></li>
 		  
 		
 		  
-			<li><a href="/Assassin/categories/笔记/" title="笔记">笔记<sup>7</sup></a></li>
+			<li><a href="/Assassin/categories/目标/" title="目标">目标<sup>1</sup></a></li>
 		  
 		
 		  
@@ -338,8 +338,8 @@
 		
 			
 				<li>
-					<a href="/Assassin/tags/nodejs/" title="nodejs">nodejs
-						<sup>2</sup>
+					<a href="/Assassin/tags/Redux/" title="Redux">Redux
+						<sup>3</sup>
 						<span><span>
 					</a>
 
@@ -349,6 +349,16 @@
 			
 				<li>
 					<a href="/Assassin/tags/Hexo/" title="Hexo">Hexo
+						<sup>2</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+			
+				<li>
+					<a href="/Assassin/tags/nodejs/" title="nodejs">nodejs
 						<sup>2</sup>
 						<span><span>
 					</a>
@@ -388,7 +398,7 @@
 		
 			
 				<li>
-					<a href="/Assassin/tags/引用类型/" title="引用类型">引用类型
+					<a href="/Assassin/tags/es6/" title="es6">es6
 						<sup>1</sup>
 						<span><span>
 					</a>
@@ -428,16 +438,6 @@
 		
 			
 				<li>
-					<a href="/Assassin/tags/面试题/" title="面试题">面试题
-						<sup>1</sup>
-						<span><span>
-					</a>
-
-				</li>
-			
-		
-			
-				<li>
 					<a href="/Assassin/tags/Thinking/" title="Thinking">Thinking
 						<sup>1</sup>
 						<span><span>
@@ -448,7 +448,17 @@
 		
 			
 				<li>
-					<a href="/Assassin/tags/es6/" title="es6">es6
+					<a href="/Assassin/tags/面试题/" title="面试题">面试题
+						<sup>1</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+			
+				<li>
+					<a href="/Assassin/tags/引用类型/" title="引用类型">引用类型
 						<sup>1</sup>
 						<span><span>
 					</a>
