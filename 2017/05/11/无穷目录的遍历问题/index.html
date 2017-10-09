@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://cpu220.github.io/2017/05/11/无穷目录的遍历问题/index.html">
 <meta property="og:site_name" content="Belial&#39;s Bookcase">
 <meta property="og:description" content="概述 原本是为了方便管理demo，于是便想给root页面添加个自动抓取所有demo页面并自动生成目录的功能。因为各种原因所以好奇有多少种方法来实现这一功能。以下为我已实现的功能及部分代码。 依赖模块 fs、path">
-<meta property="og:updated_time" content="2017-05-11T13:07:34.000Z">
+<meta property="og:updated_time" content="2017-10-09T14:25:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="无穷目录的遍历问题">
 <meta name="twitter:description" content="概述 原本是为了方便管理demo，于是便想给root页面添加个自动抓取所有demo页面并自动生成目录的功能。因为各种原因所以好奇有多少种方法来实现这一功能。以下为我已实现的功能及部分代码。 依赖模块 fs、path">
@@ -118,7 +118,7 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readdir"><span class="toc-number">2.</span> <span class="toc-text">readdir</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readdirSync"><span class="toc-number">3.</span> <span class="toc-text">readdirSync</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise"><span class="toc-number">4.</span> <span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async"><span class="toc-number">5.</span> <span class="toc-text">async</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readdir"><span class="toc-number">2.</span> <span class="toc-text">readdir</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readdirSync"><span class="toc-number">3.</span> <span class="toc-text">readdirSync</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise"><span class="toc-number">4.</span> <span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async-await"><span class="toc-number">5.</span> <span class="toc-text">async/await</span></a></li></ol>
 		
 			<div class="page-count">
 				<span id="busuanzi_value_page_pv"></span>
@@ -148,14 +148,23 @@
 <li>对于文件结构只有一层的目录来说，功能实现了。但这和第一种方法差别并没有什么，不是我们想要的。因为我们还是想要无穷递进的目录结构，所以我们需要更进一步。</li>
 <li><code>promise.all</code> 可以将多个Promise实例，包装成一个新的Promise实例。这样我就可以不用去管递归，也不去考虑如何利用左子树遍历将结果一级一级的返回给root。</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">getDir(dir) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        fs.readdir(dir, (err, list) =&gt; &#123;</div><div class="line">            <span class="keyword">if</span> (err) &#123;</div><div class="line">                reject(err);</div><div class="line">            &#125;</div><div class="line">            resolve(list);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">getResult(dir) &#123; </div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.hasFile(dir).then(<span class="function"><span class="params">stats</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span> (stats.isDirectory()) &#123;</div><div class="line">          <span class="comment">// 如果是目录的话，则递归</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.getDir(dir).then(<span class="function"><span class="params">list</span> =&gt;</span></div><div class="line">                <span class="built_in">Promise</span>.all(list.map(<span class="function"><span class="params">item</span> =&gt;</span></div><div class="line">                    <span class="keyword">this</span>.getResult( path.resolve(dir, item))</div><div class="line">                ))</div><div class="line">            );</div><div class="line"></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">// 如果不是目录</span></div><div class="line">            <span class="keyword">if</span> (dir.indexOf(<span class="string">`.<span class="subst">$&#123;<span class="keyword">this</span>.suffix&#125;</span>`</span>) &gt;= <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">this</span>.arr.push(dir);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line">getDir(dir) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        fs.readdir(dir, (err, list) =&gt; &#123;</div><div class="line">            <span class="keyword">if</span> (err) &#123;</div><div class="line">                reject(err);</div><div class="line">            &#125;</div><div class="line">            resolve(list);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line">getResult(dir) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.hasFile(dir).then(<span class="function"><span class="params">stats</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span> (stats.isDirectory()) &#123;</div><div class="line">          <span class="comment">// 如果是目录的话，则递归</span></div><div class="line">            <span class="keyword">return</span> <span class="keyword">this</span>.getDir(dir).then(<span class="function"><span class="params">list</span> =&gt;</span></div><div class="line">                <span class="built_in">Promise</span>.all(list.map(<span class="function"><span class="params">item</span> =&gt;</span></div><div class="line">                    <span class="keyword">this</span>.getResult( path.resolve(dir, item))</div><div class="line">                ))</div><div class="line">            );</div><div class="line"></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">// 如果不是目录</span></div><div class="line">            <span class="keyword">if</span> (dir.indexOf(<span class="string">`.<span class="subst">$&#123;<span class="keyword">this</span>.suffix&#125;</span>`</span>) &gt;= <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">this</span>.arr.push(dir);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
 <li>这样对于我来说，我就可以在 getDie上在通过then来得到最终结果了。因为 getDir 其实是返回了一个 promise对象。但又有了问题，我怎么讲最终结果一次性的抛给接口呢？毕竟我递归了同一个function，于是我就不能区分谁才是root层。</li>
 <li>于是这里就可以借鉴jQuery对于arguments上的使用技巧。不过我并不打算这么做。我用了一个很简单的方法来做判断，就是将参数改为{}，根据传参不同来确定是执行callback，还是return 结果。</li>
 <li>完整的源码在<a href="https://github.com/cpu220/getFiles" target="_blank" rel="external">这里</a>    ，为了方便我自己使用，我扔到了npm上</li>
 </ul>
-<h2 id="async"><a href="#async" class="headerlink" title="async"></a>async</h2><ul>
-<li>待补充</li>
+<h2 id="async-await"><a href="#async-await" class="headerlink" title="async/await"></a>async/await</h2><ul>
+<li>其实无限递归在于查询效率和对于异常状态的容错率，对于异步问题来说，我们一旦使用了Promise，那么受限于其then,于是从第一个Promise对象开始，后面所有都要以then来无限承载。那么对于一个代码逻辑来说，通篇看到的全是<code>return Promise</code> 就有点尴尬。</li>
+<li>async/await 最大的感受就是让代码从无尽的Promise嵌套跳了出来，回归到了同步的书写风格。那么上述demo，就变更为了</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">getDir(dir) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        fs.readdir(dir, (err, list) =&gt; &#123;</div><div class="line">            <span class="keyword">if</span> (err) &#123;</div><div class="line">                reject(err);</div><div class="line">            &#125;</div><div class="line">            resolve(list);</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// async 只是说明，getResult是一个async函数</span></div><div class="line"><span class="keyword">async</span> getResult(dir) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>.hasFile(dir).then(<span class="function"><span class="params">stats</span> =&gt;</span> &#123;</div><div class="line">        <span class="keyword">if</span> (stats.isDirectory()) &#123;</div><div class="line">          <span class="comment">// 如果是目录的话，则递归</span></div><div class="line">          <span class="comment">// 等待this.getDir执行完毕后，将结果返回result</span></div><div class="line">          <span class="keyword">let</span> result  = <span class="keyword">await</span> <span class="keyword">this</span>.getDir(dir);</div><div class="line"></div><div class="line">            <span class="built_in">Promise</span>.all(result.map(<span class="function"><span class="params">item</span> =&gt;</span></div><div class="line">                <span class="keyword">this</span>.getResult( path.resolve(dir, item))</div><div class="line">            ));</div><div class="line"></div><div class="line">        &#125; <span class="keyword">else</span> &#123;</div><div class="line">            <span class="comment">// 如果不是目录</span></div><div class="line">            <span class="keyword">if</span> (dir.indexOf(<span class="string">`.<span class="subst">$&#123;<span class="keyword">this</span>.suffix&#125;</span>`</span>) &gt;= <span class="number">0</span>) &#123;</div><div class="line">                <span class="keyword">this</span>.arr.push(dir);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>由于async/await 其实会根据return结果自行resolve/reject，所以当await的时候报错，之后的代码是不会执行的。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">    <span class="keyword">let</span> result  = <span class="keyword">await</span> <span class="keyword">this</span>.getDir(dir);</div><div class="line">&#125;<span class="keyword">catch</span>(err)&#123;</div><div class="line">    <span class="built_in">console</span>.error(<span class="string">'报错'</span>)</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>考虑到实际性能和代码复杂度,getFiles 最终使用的是Promise</li>
 </ul>
   
 	</div>
@@ -246,7 +255,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readdir"><span class="toc-number">2.</span> <span class="toc-text">readdir</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readdirSync"><span class="toc-number">3.</span> <span class="toc-text">readdirSync</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise"><span class="toc-number">4.</span> <span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async"><span class="toc-number">5.</span> <span class="toc-text">async</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#概述"><span class="toc-number">1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readdir"><span class="toc-number">2.</span> <span class="toc-text">readdir</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#readdirSync"><span class="toc-number">3.</span> <span class="toc-text">readdirSync</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Promise"><span class="toc-number">4.</span> <span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#async-await"><span class="toc-number">5.</span> <span class="toc-text">async/await</span></a></li></ol>
  
   </div>
 
@@ -263,7 +272,7 @@
 		<ul>
 		
 		  
-			<li><a href="/Assassin/categories/目标/" title="目标">目标<sup>2</sup></a></li>
+			<li><a href="/Assassin/categories/目标/" title="目标">目标<sup>1</sup></a></li>
 		  
 		
 		  
@@ -278,30 +287,11 @@
 </div>
 
 
+
   
 <div class="tagslist">
 	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
-		
-			
-				<li>
-					<a href="/Assassin/tags/Hexo/" title="Hexo">Hexo
-						<sup>2</sup>
-						<span><span>
-					</a>
-
-				</li>
-			
-		
-			
-				<li>
-					<a href="/Assassin/tags/Thinking/" title="Thinking">Thinking
-						<sup>2</sup>
-						<span><span>
-					</a>
-
-				</li>
-			
 		
 			
 				<li>
@@ -315,8 +305,8 @@
 		
 			
 				<li>
-					<a href="/Assassin/tags/面试题/" title="面试题">面试题
-						<sup>1</sup>
+					<a href="/Assassin/tags/Hexo/" title="Hexo">Hexo
+						<sup>2</sup>
 						<span><span>
 					</a>
 
@@ -345,7 +335,7 @@
 		
 			
 				<li>
-					<a href="/Assassin/tags/commander/" title="commander">commander
+					<a href="/Assassin/tags/原始类型/" title="原始类型">原始类型
 						<sup>1</sup>
 						<span><span>
 					</a>
@@ -375,7 +365,27 @@
 		
 			
 				<li>
+					<a href="/Assassin/tags/commander/" title="commander">commander
+						<sup>1</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+			
+				<li>
 					<a href="/Assassin/tags/jQuery/" title="jQuery">jQuery
+						<sup>1</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+			
+				<li>
+					<a href="/Assassin/tags/Thinking/" title="Thinking">Thinking
 						<sup>1</sup>
 						<span><span>
 					</a>
@@ -395,7 +405,7 @@
 		
 			
 				<li>
-					<a href="/Assassin/tags/原始类型/" title="原始类型">原始类型
+					<a href="/Assassin/tags/面试题/" title="面试题">面试题
 						<sup>1</sup>
 						<span><span>
 					</a>
@@ -413,7 +423,13 @@
         
           <li>
             
-            	<a href="https://coding.net/user" target="_blank" title="寡人再是使用的代码托管平台">Coding</a>
+            	<a href="https://github.com/cpu220" target="_blank" title="Github">Github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://coding.net/user" target="_blank" title="Coding">Coding</a>
             
           </li>
         

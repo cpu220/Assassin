@@ -81,6 +81,240 @@
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/Assassin/2017/10/09/Redux-compose/" title="Redux-compose" itemprop="url">Redux-compose</a>
+    
+    
+
+  </h1>
+  <div class="page-info fn-clear">
+
+    <div class="article-author">
+        
+          <a href="/Assassin/about" title="Belial" target="_blank" itemprop="author">Belial</a>
+        
+    </div>
+    <div class="article-time">
+      <time datetime="2017-10-09T10:02:02.000Z" itemprop="datePublished">
+        <!-- 发表于  -->
+        2017-10-09
+      </time>
+    </div>
+  </div>
+
+  
+  <div class="photo-content">
+
+    
+  </div>
+  
+</header>
+    <div class="article-content">
+        
+        <ul>
+<li>这个接口很简单，总共就9行代码。没有任何依赖，就是个纯函数</li>
+<li>作用也很简单，实现链式调用</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">...funcs</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (funcs.length === <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="params">arg</span> =&gt;</span> arg</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (funcs.length === <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> funcs[<span class="number">0</span>]</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> funcs.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> (...args) =&gt; a(b(...args)))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>这么一看，未必觉得这个接口的价值在哪里。所以看下面的例子</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">`入参 <span class="subst">$&#123;num&#125;</span>,a准备+1`</span>);</div><div class="line">	<span class="keyword">return</span> num+<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">`入参 <span class="subst">$&#123;num&#125;</span>,b准备+2`</span>);</div><div class="line">	<span class="keyword">return</span> num+<span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">`入参 <span class="subst">$&#123;num&#125;</span>,c准备+3`</span>);</div><div class="line">	<span class="keyword">return</span> num+<span class="number">3</span>;</div><div class="line">&#125;</div><div class="line">compose(b,c,a)(<span class="number">0</span>);<span class="comment">// 注意是从右向左</span></div><div class="line"><span class="comment">// 入参 0，a准备+1</span></div><div class="line"><span class="comment">// 入参 1，b准备+2</span></div><div class="line"><span class="comment">// 入参 3，c准备+3</span></div></pre></td></tr></table></figure>
+<ul>
+<li>compose可以用来合并dispatch，想想下如果a/b/c这些名字很长的情况下…</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    
+<footer class="article-footer clearfix">
+<div class="article-catetags fn-clear">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Assassin/2017/10/09/Redux-Saga/" title="Redux-Saga" itemprop="url">Redux-Saga</a>
+    
+    
+
+  </h1>
+  <div class="page-info fn-clear">
+
+    <div class="article-author">
+        
+          <a href="/Assassin/about" title="Belial" target="_blank" itemprop="author">Belial</a>
+        
+    </div>
+    <div class="article-time">
+      <time datetime="2017-10-09T06:55:42.000Z" itemprop="datePublished">
+        <!-- 发表于  -->
+        2017-10-09
+      </time>
+    </div>
+  </div>
+
+  
+  <div class="photo-content">
+
+    
+  </div>
+  
+</header>
+    <div class="article-content">
+        
+        <ul>
+<li>待填坑</li>
+<li><a href="http://leonshi.com/redux-saga-in-chinese/index.html" target="_blank" rel="external">http://leonshi.com/redux-saga-in-chinese/index.html</a></li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    
+<footer class="article-footer clearfix">
+<div class="article-catetags fn-clear">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/Assassin/2017/10/09/Redux-createStore/" title="Redux-createStore" itemprop="url">Redux-createStore</a>
+    
+    
+
+  </h1>
+  <div class="page-info fn-clear">
+
+    <div class="article-author">
+        
+          <a href="/Assassin/about" title="Belial" target="_blank" itemprop="author">Belial</a>
+        
+    </div>
+    <div class="article-time">
+      <time datetime="2017-10-09T06:40:08.000Z" itemprop="datePublished">
+        <!-- 发表于  -->
+        2017-10-09
+      </time>
+    </div>
+  </div>
+
+  
+  <div class="photo-content">
+
+    
+  </div>
+  
+</header>
+    <div class="article-content">
+        
+        <ul>
+<li><p>react相比vue，angular,它只是作用在view层，所以对于组件之间的通讯，数据流的处理，整体代码结构其实并不涉及。于是带来的直接结果就是，纯原生react其实不适合做一个完成的工程。但为了弥补这一问题，react支持插件形式的中间件框架。如flux、redux。目前对于react开发者来说，用的最多的也就是redux。</p>
+</li>
+<li><p>既然是对数据流的管理，redux的整体流程是什么</p>
+</li>
+</ul>
+<h3 id="store"><a href="#store" class="headerlink" title="store"></a>store</h3><ul>
+<li>redux通过对全局唯一store的来管理工程中的state，这样分散于所有父子组件的state就集中与store来控制。</li>
+<li>createStore</li>
+</ul>
+        
+        
+        <p class="article-more-link">
+          
+            <a href="/Assassin/2017/10/09/Redux-createStore/#more">戳这里...</a>
+          
+       </p>
+    </div>
+    
+<footer class="article-footer clearfix">
+<div class="article-catetags fn-clear">
+
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/Assassin/2017/05/12/javacript‘s-immutable/" title="javacript&#39;s immutable" itemprop="url">javacript&#39;s immutable</a>
     
     
@@ -248,262 +482,6 @@
 
 
 
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/Assassin/2017/05/08/Linux下node环境配置及安装/" title="Linux下node环境配置及安装" itemprop="url">Linux下node环境配置及安装</a>
-    
-    
-      <div class="article-description">在linux服务器上部署node环境，本文以Hexo为案例，进行node环境的配置</div>
-    
-
-  </h1>
-  <div class="page-info fn-clear">
-
-    <div class="article-author">
-        
-          <a href="/Assassin/about" title="Belial" target="_blank" itemprop="author">Belial</a>
-        
-    </div>
-    <div class="article-time">
-      <time datetime="2017-05-08T08:23:35.000Z" itemprop="datePublished">
-        <!-- 发表于  -->
-        2017-05-08
-      </time>
-    </div>
-  </div>
-
-  
-  <div class="photo-content">
-
-    
-  </div>
-  
-</header>
-    <div class="article-content">
-        
-        <h2 id="Linux下node环境配置及安装"><a href="#Linux下node环境配置及安装" class="headerlink" title="Linux下node环境配置及安装"></a>Linux下node环境配置及安装</h2><ul>
-<li>我们都知道进行node开发，是需要node环境。那么一套标准的前端环境最低也是要包含node，git，npm 这3个。那么我们第一步就要先进行环境及工具的安装。
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/Assassin/2017/05/08/Linux下node环境配置及安装/#more">戳这里...</a>
-          
-       </p>
-    </div>
-    
-<footer class="article-footer clearfix">
-<div class="article-catetags fn-clear">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/Assassin/categories/笔记/">笔记</a>
-</div>
-
-
-  <div class="article-tags ">
-  
-  <span></span> <a href="/Assassin/tags/Hexo/">Hexo</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/Assassin/2017/05/05/node全局命令/" title="node+commander" itemprop="url">node+commander</a>
-    
-    
-      <div class="article-description">关于如何实现node全局command的说明</div>
-    
-
-  </h1>
-  <div class="page-info fn-clear">
-
-    <div class="article-author">
-        
-          <a href="/Assassin/about" title="Belial" target="_blank" itemprop="author">Belial</a>
-        
-    </div>
-    <div class="article-time">
-      <time datetime="2017-05-05T02:34:13.000Z" itemprop="datePublished">
-        <!-- 发表于  -->
-        2017-05-05
-      </time>
-    </div>
-  </div>
-
-  
-  <div class="photo-content">
-
-    
-  </div>
-  
-</header>
-    <div class="article-content">
-        
-        <h2 id="node全局命令"><a href="#node全局命令" class="headerlink" title="node全局命令"></a>node全局命令</h2><ul>
-<li>有没有这种感觉：写的脚手架，工具太多了，每次都要拖工程，或者把什么文件往什么工具目录下放，然后再敲命令行执行，是在是太麻烦了。</li>
-<li>所以，为什么不自己写一个<code>command</code>，专门为自己服务的控制台，想要什么功能自己可以随时添加命令挂载？</li>
-<li>本文以我自己的command为demo，懒得看下面图文的可以直接看我的<a href="https://github.com/cpu220/Daji" target="_blank" rel="external">妲己</a>
-        
-        
-        <p class="article-more-link">
-          
-            <a href="/Assassin/2017/05/05/node全局命令/#more">戳这里...</a>
-          
-       </p>
-    </div>
-    
-<footer class="article-footer clearfix">
-<div class="article-catetags fn-clear">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/Assassin/categories/笔记/">笔记</a>
-</div>
-
-
-  <div class="article-tags ">
-  
-  <span></span> <a href="/Assassin/tags/nodejs/">nodejs</a><a href="/Assassin/tags/commander/">commander</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/Assassin/2017/05/04/Return/" title="Return" itemprop="url">Return</a>
-    
-    
-      <div class="article-description">再次感慨下</div>
-    
-
-  </h1>
-  <div class="page-info fn-clear">
-
-    <div class="article-author">
-        
-          <a href="/Assassin/about" title="Belial" target="_blank" itemprop="author">Belial</a>
-        
-    </div>
-    <div class="article-time">
-      <time datetime="2017-05-04T12:28:27.000Z" itemprop="datePublished">
-        <!-- 发表于  -->
-        2017-05-04
-      </time>
-    </div>
-  </div>
-
-  
-  <div class="photo-content">
-
-    
-  </div>
-  
-</header>
-    <div class="article-content">
-        
-        <h3 id="感慨"><a href="#感慨" class="headerlink" title="感慨"></a>感慨</h3><ul>
-<li>本来是混coding，起始原因也是因为coding有个项目展示，这对于前端来说相当于免费的服务器。</li>
-<li>然而coding收费后，就懒得用了，加上加班、加班、加班的。1整年处于外网不能提交任何内容的状态，懒癌也犯了，毕竟是在受不了工作写一版，下班回来再写一版。打算再用的时候，coding对项目演示功能永久停用了。于是在懒癌又犯了一段时间后，还是打算迁移到github上好了。</li>
-<li>虽然写了很多脚手架，工具，包。然后却因为网络限制没有一个在外网存活着，不得不说是个悲哀。本着复习和学习的态度。后面会慢慢的迁移到github上，所以，立贴为证~！</li>
-</ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    
-<footer class="article-footer clearfix">
-<div class="article-catetags fn-clear">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/Assassin/categories/目标/">目标</a>
-</div>
-
-
-  <div class="article-tags ">
-  
-  <span></span> <a href="/Assassin/tags/Thinking/">Thinking</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-
-
-
 
   <nav id="page-nav" class="clearfix">
     <span class="page-number current">1</span><a class="page-number" href="/Assassin/page/2/">2</a><a class="page-number" href="/Assassin/page/3/">3</a><a class="extend next" rel="next" href="/Assassin/page/2/">Next<span></span></a>
@@ -525,7 +503,7 @@
 		<ul>
 		
 		  
-			<li><a href="/Assassin/categories/目标/" title="目标">目标<sup>2</sup></a></li>
+			<li><a href="/Assassin/categories/目标/" title="目标">目标<sup>1</sup></a></li>
 		  
 		
 		  
@@ -540,30 +518,11 @@
 </div>
 
 
+
   
 <div class="tagslist">
 	<p class="asidetitle">标签</p>
 		<ul class="clearfix">
-		
-			
-				<li>
-					<a href="/Assassin/tags/Hexo/" title="Hexo">Hexo
-						<sup>2</sup>
-						<span><span>
-					</a>
-
-				</li>
-			
-		
-			
-				<li>
-					<a href="/Assassin/tags/Thinking/" title="Thinking">Thinking
-						<sup>2</sup>
-						<span><span>
-					</a>
-
-				</li>
-			
 		
 			
 				<li>
@@ -577,8 +536,8 @@
 		
 			
 				<li>
-					<a href="/Assassin/tags/面试题/" title="面试题">面试题
-						<sup>1</sup>
+					<a href="/Assassin/tags/Hexo/" title="Hexo">Hexo
+						<sup>2</sup>
 						<span><span>
 					</a>
 
@@ -607,7 +566,7 @@
 		
 			
 				<li>
-					<a href="/Assassin/tags/commander/" title="commander">commander
+					<a href="/Assassin/tags/原始类型/" title="原始类型">原始类型
 						<sup>1</sup>
 						<span><span>
 					</a>
@@ -637,7 +596,27 @@
 		
 			
 				<li>
+					<a href="/Assassin/tags/commander/" title="commander">commander
+						<sup>1</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+			
+				<li>
 					<a href="/Assassin/tags/jQuery/" title="jQuery">jQuery
+						<sup>1</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+			
+				<li>
+					<a href="/Assassin/tags/Thinking/" title="Thinking">Thinking
 						<sup>1</sup>
 						<span><span>
 					</a>
@@ -657,7 +636,7 @@
 		
 			
 				<li>
-					<a href="/Assassin/tags/原始类型/" title="原始类型">原始类型
+					<a href="/Assassin/tags/面试题/" title="面试题">面试题
 						<sup>1</sup>
 						<span><span>
 					</a>
@@ -675,7 +654,13 @@
         
           <li>
             
-            	<a href="https://coding.net/user" target="_blank" title="寡人再是使用的代码托管平台">Coding</a>
+            	<a href="https://github.com/cpu220" target="_blank" title="Github">Github</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="https://coding.net/user" target="_blank" title="Coding">Coding</a>
             
           </li>
         
