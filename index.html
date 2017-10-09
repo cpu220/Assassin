@@ -114,18 +114,11 @@
 <li>这个接口很简单，总共就9行代码。没有任何依赖，就是个纯函数</li>
 <li>作用也很简单，实现链式调用</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="function"><span class="keyword">function</span> <span class="title">compose</span>(<span class="params">...funcs</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (funcs.length === <span class="number">0</span>) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="function"><span class="params">arg</span> =&gt;</span> arg</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">if</span> (funcs.length === <span class="number">1</span>) &#123;</div><div class="line">    <span class="keyword">return</span> funcs[<span class="number">0</span>]</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> funcs.reduce(<span class="function">(<span class="params">a, b</span>) =&gt;</span> (...args) =&gt; a(b(...args)))</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>这么一看，未必觉得这个接口的价值在哪里。所以看下面的例子</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">a</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">`入参 <span class="subst">$&#123;num&#125;</span>,a准备+1`</span>);</div><div class="line">	<span class="keyword">return</span> num+<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">b</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">`入参 <span class="subst">$&#123;num&#125;</span>,b准备+2`</span>);</div><div class="line">	<span class="keyword">return</span> num+<span class="number">2</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">c</span>(<span class="params">num</span>)</span>&#123;</div><div class="line">	<span class="built_in">console</span>.log(<span class="string">`入参 <span class="subst">$&#123;num&#125;</span>,c准备+3`</span>);</div><div class="line">	<span class="keyword">return</span> num+<span class="number">3</span>;</div><div class="line">&#125;</div><div class="line">compose(b,c,a)(<span class="number">0</span>);<span class="comment">// 注意是从右向左</span></div><div class="line"><span class="comment">// 入参 0，a准备+1</span></div><div class="line"><span class="comment">// 入参 1，b准备+2</span></div><div class="line"><span class="comment">// 入参 3，c准备+3</span></div></pre></td></tr></table></figure>
-<ul>
-<li>compose可以用来合并dispatch，想想下如果a/b/c这些名字很长的情况下…</li>
-</ul>
-
         
         
         <p class="article-more-link">
+          
+            <a href="/Assassin/2017/10/09/Redux-compose/#more">戳这里...</a>
           
        </p>
     </div>
@@ -616,6 +609,16 @@
 		
 			
 				<li>
+					<a href="/Assassin/tags/面试题/" title="面试题">面试题
+						<sup>1</sup>
+						<span><span>
+					</a>
+
+				</li>
+			
+		
+			
+				<li>
 					<a href="/Assassin/tags/Thinking/" title="Thinking">Thinking
 						<sup>1</sup>
 						<span><span>
@@ -627,16 +630,6 @@
 			
 				<li>
 					<a href="/Assassin/tags/es6/" title="es6">es6
-						<sup>1</sup>
-						<span><span>
-					</a>
-
-				</li>
-			
-		
-			
-				<li>
-					<a href="/Assassin/tags/面试题/" title="面试题">面试题
 						<sup>1</sup>
 						<span><span>
 					</a>
